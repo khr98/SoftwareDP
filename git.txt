@@ -197,5 +197,146 @@ Changes not staged for commit:
   (use "git restore <file>..." to discard changes in working directory)
 	deleted:    test.txt
 
+$git commit -m "test"
+[master (root-commit) 3a08c0c] test
+ 2 files changed, 202 insertions(+)
+ create mode 100644 git.txt
+ create mode 100644 test2.txt
+
+$git log
+commit 3a08c0c056567d0cfd8554a8430f4ea1079f7e43 (HEAD -> master)
+Author: hyerim Kim <hyerim980513@gmail.com>
+Date:   Thu Sep 23 20:22:19 2021 +0900
+
+    test
+
+$git log --pretty=oneline
+3a08c0c056567d0cfd8554a8430f4ea1079f7e43 (HEAD -> master) test
+
+$git commit --amend
+test
+  2
+  3 # Please enter the commit message for your changes. Lines starting
+  4 # with '#' will be ignored, and an empty message aborts the commit.
+  5 #
+  6 # Date:      Thu Sep 23 20:22:19 2021 +0900
+  7 #
+  8 # On branch master
+  9 #
+ 10 # Initial commit
+ 11 #
+ 12 # Changes to be committed:
+ 13 #       new file:   git.txt
+ 14 #       new file:   test2.txt
+ 15 #
+ 16 # Changes not staged for commit:
+ 17 #       modified:   git.txt
+ 18 #
+
+$git add *
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   a.txt
+	new file:   b.txt
+	modified:   git.txt
+
+$git remote
+origin
+
+$git remote -v
+origin	git@github.com:khr98/SoftwareDP.git (fetch)
+origin	git@github.com:khr98/SoftwareDP.git (push)
+
+$git remote add origin git@github.com:khr98/SoftwareDP.git
+
+$git push origin master
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 2.28 KiB | 2.28 MiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+To github.com:khr98/SoftwareDP.git
+ * [new branch]      master -> master
+
+$git remote show origin
+* remote origin
+  Fetch URL: git@github.com:khr98/SoftwareDP.git
+  Push  URL: git@github.com:khr98/SoftwareDP.git
+  HEAD branch: master
+  Remote branch:
+    master tracked
+  Local ref configured for 'git push':
+    master pushes to master (up to date)
+
+$git tag -a v1.4 -m "my version 1.4"
+$git tag
+v1.4
+
+$git show v1.4
+tag v1.4
+Tagger: hyerim Kim <hyerim980513@gmail.com>
+Date:   Thu Sep 23 21:03:22 2021 +0900
+
+my version 1.4
+
+commit 4d1f1c905f3646c2403c8b547dfaceba201f4f15 (HEAD -> master, tag: v1.4, origin/master)
+Author: hyerim Kim <hyerim980513@gmail.com>
+Date:   Thu Sep 23 20:22:19 2021 +0900
+
+    test
+
+$git tag v1.4-lw
+$git tag
+v1.4
+v1.4-lw
+
+$git show v1.4-lw
+commit 4d1f1c905f3646c2403c8b547dfaceba201f4f15 (HEAD -> master, tag: v1.4-lw, tag: v1.4, origin/master)
+Author: hyerim Kim <hyerim980513@gmail.com>
+Date:   Thu Sep 23 20:22:19 2021 +0900
+
+    test
+
+$git push origin --tags
+Enumerating objects: 1, done.
+Counting objects: 100% (1/1), done.
+Writing objects: 100% (1/1), 163 bytes | 163.00 KiB/s, done.
+Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
+To github.com:khr98/SoftwareDP.git
+ * [new tag]         v1.4 -> v1.4
+ * [new tag]         v1.4-lw -> v1.4-lw
+
+$git checkout v1.4
+M	git.txt
+D	test2.txt
+Note: switching to 'v1.4'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 4d1f1c9 test
+
+$git config --global alias.last 'log -1 HEAD'
+
+$git last
+commit 4d1f1c905f3646c2403c8b547dfaceba201f4f15 (HEAD -> master, origin/master)
+Author: hyerim Kim <hyerim980513@gmail.com>
+Date:   Thu Sep 23 20:22:19 2021 +0900
+
+    test
 
 
